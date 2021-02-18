@@ -45,11 +45,12 @@ namespace HITS_Flight_Simulator
         public (double,double) MaxHL()
         {
 
-            return(v0 * v0 * Math.Sin(a) * Math.Sin(a) / (2 * g) + 2 + y0, v0 * v0 * Math.Sin(2 * a) / g + 2);
+            return(v0 *v0*  Math.Sin(a) * Math.Sin(a) / (2 * g) + 2+y0, v0 *v0 * Math.Sin(2 * a) / g + 2);
         }
 
         public void StartOfFlight(double dtime )
         {
+            time_sum = 0;
             k = 0.5 * C * S * rho / m;
             dt = dtime;
             vx = v0 * Math.Cos(a);

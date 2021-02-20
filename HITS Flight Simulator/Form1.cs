@@ -22,24 +22,24 @@ namespace HITS_Flight_Simulator
         private void button1_Click(object sender, EventArgs e)
         {
             
-            time_timer.Text = $"Времени прошло {fg.time_sum}";
+            time_timer.Text = $"Времени прошло {fg.time_sum} с";
             InitFlightComp();
-            fg.StartOfFlight((double)timer1.Interval / 1000);
-            double max_height = fg.MaxHL().Item1;
-            double max_lenght = fg.MaxHL().Item2;
+            fg.StartOfFlight(0.01);
+            //double max_height = fg.MaxHL().Item1;
+            //double max_lenght = fg.MaxHL().Item2;
             
             chart1.Series[0].Points.Clear();
             chart1.Series[0].Points.AddXY(0, fg.y0);
             timer1.Start();
             
-            chart1.ChartAreas[0].AxisY.Maximum = max_height;
-            chart1.ChartAreas[0].AxisX.Maximum = max_lenght;
+            chart1.ChartAreas[0].AxisY.Maximum = 10;
+            chart1.ChartAreas[0].AxisX.Maximum = 20;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             (double,double) XY = fg.TickOfFlight();
-            time_timer.Text = $"Времени прошло {fg.time_sum}";
+            time_timer.Text = $"Времени прошло {fg.time_sum} c";
             chart1.Series[0].Points.AddXY(XY.Item1, XY.Item2);
             if (XY.Item2 <= 0) timer1.Stop();
 
